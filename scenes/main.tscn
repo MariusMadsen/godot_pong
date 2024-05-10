@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://d2ie8laq78mxf" path="res://scenes/paddle.tscn" id="1_sgrte"]
 [ext_resource type="Script" path="res://scripts/GameManager.gd" id="2_7hov7"]
 [ext_resource type="PackedScene" uid="uid://yyk1aasjtrwr" path="res://scenes/ball.tscn" id="2_ulu0k"]
-[ext_resource type="AudioStream" uid="uid://dn8hjrfe4f5x1" path="res://assets/death.wav" id="3_bc7bv"]
+[ext_resource type="AudioStream" uid="uid://dn8hjrfe4f5x1" path="res://sounds/death.wav" id="3_bc7bv"]
 [ext_resource type="PackedScene" uid="uid://c8wo3k7bn857l" path="res://scenes/boundary.tscn" id="3_gbesj"]
 [ext_resource type="Script" path="res://scripts/killzone.gd" id="5_wt06u"]
 [ext_resource type="PackedScene" uid="uid://beb183ddqbser" path="res://scenes/divider.tscn" id="7_cjypy"]

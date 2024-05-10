@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://cowx4w57tsu1v"
-path="res://.godot/imported/boing.wav-26cad1214872e3a2592bf88e84788201.sample"
+uid="uid://dn8hjrfe4f5x1"
+path="res://.godot/imported/death.wav-f25f3fdea106fce4e1b173bbe13f8ab4.sample"
 
 [deps]
 
-source_file="res://assets/boing.wav"
-dest_files=["res://.godot/imported/boing.wav-26cad1214872e3a2592bf88e84788201.sample"]
+source_file="res://sounds/death.wav"
+dest_files=["res://.godot/imported/death.wav-f25f3fdea106fce4e1b173bbe13f8ab4.sample"]
 
 [params]
 
