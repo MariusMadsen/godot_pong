@@ -1,0 +1,108 @@
+[gd_scene load_steps=9 format=3 uid="uid://baf8hka866meb"]
+
+[ext_resource type="PackedScene" uid="uid://d2ie8laq78mxf" path="res://scenes/paddle.tscn" id="1_sgrte"]
+[ext_resource type="Script" path="res://scripts/GameManager.gd" id="2_7hov7"]
+[ext_resource type="PackedScene" uid="uid://yyk1aasjtrwr" path="res://scenes/ball.tscn" id="2_ulu0k"]
+[ext_resource type="AudioStream" uid="uid://dn8hjrfe4f5x1" path="res://assets/death.wav" id="3_bc7bv"]
+[ext_resource type="PackedScene" uid="uid://c8wo3k7bn857l" path="res://scenes/boundary.tscn" id="3_gbesj"]
+[ext_resource type="Script" path="res://scripts/killzone.gd" id="5_wt06u"]
+[ext_resource type="PackedScene" uid="uid://beb183ddqbser" path="res://scenes/divider.tscn" id="7_cjypy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_67uy2"]
+
+[node name="main" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2(-0.08017, 0.36113)
+
+[node name="ball" parent="." instance=ExtResource("2_ulu0k")]
+unique_name_in_owner = true
+position = Vector2(-1, -2)
+
+[node name="GameManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_7hov7")
+
+[node name="Label" type="Label" parent="GameManager"]
+offset_left = -93.0
+offset_top = -323.0
+offset_right = -46.0
+offset_bottom = -300.0
+text = "PONG"
+
+[node name="ScoreboardLabel" type="Label" parent="GameManager"]
+offset_left = 39.0
+offset_top = -320.0
+offset_right = 79.0
+offset_bottom = -297.0
+
+[node name="Timer" type="Timer" parent="GameManager"]
+wait_time = 0.777
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="GameManager"]
+stream = ExtResource("3_bc7bv")
+
+[node name="Paddles" type="Node" parent="."]
+
+[node name="paddle" parent="Paddles" instance=ExtResource("1_sgrte")]
+unique_name_in_owner = true
+position = Vector2(-564, 0)
+scale = Vector2(0.0484287, 0.0494616)
+
+[node name="paddle2" parent="Paddles" instance=ExtResource("1_sgrte")]
+unique_name_in_owner = true
+position = Vector2(565, 0)
+rotation = 3.14159
+scale = Vector2(0.0484287, 0.0494616)
+player_id = 1
+
+[node name="Boundaries" type="Node" parent="."]
+
+[node name="BottomBoundary" parent="Boundaries" instance=ExtResource("3_gbesj")]
+unique_name_in_owner = true
+position = Vector2(1, 324)
+
+[node name="TopBoundary" parent="Boundaries" instance=ExtResource("3_gbesj")]
+unique_name_in_owner = true
+position = Vector2(-1, -325)
+rotation = 3.14156
+skew = 0.0523598
+
+[node name="PaddleWall" type="StaticBody2D" parent="Boundaries"]
+position = Vector2(1, 337)
+scale = Vector2(57.4732, 1.15292)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/PaddleWall"]
+shape = SubResource("RectangleShape2D_67uy2")
+
+[node name="PaddleWall2" type="StaticBody2D" parent="Boundaries"]
+position = Vector2(1, -338)
+scale = Vector2(57.4732, 1.15292)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/PaddleWall2"]
+shape = SubResource("RectangleShape2D_67uy2")
+
+[node name="PlayerTwoWall" parent="Boundaries" instance=ExtResource("3_gbesj")]
+position = Vector2(579, -2)
+rotation = -1.5708
+script = ExtResource("5_wt06u")
+player_wall = 1
+
+[node name="PlayerOneWall" parent="Boundaries" instance=ExtResource("3_gbesj")]
+position = Vector2(-581, -2)
+rotation = 1.5708
+script = ExtResource("5_wt06u")
+player_wall = 0
+
+[node name="Divider" parent="." instance=ExtResource("7_cjypy")]
+position = Vector2(0, 1)
+scale = Vector2(5.36093, 22.3609)
+
+[connection signal="ready" from="GameManager" to="ball" method="_on_game_manager_ready"]
+[connection signal="ready" from="GameManager" to="GameManager" method="_on_ready"]
+[connection signal="timeout" from="GameManager/Timer" to="ball" method="_on_timer_timeout"]
+[connection signal="timeout" from="GameManager/Timer" to="GameManager" method="_on_timer_timeout"]

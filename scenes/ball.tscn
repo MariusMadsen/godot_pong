@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://yyk1aasjtrwr"]
+
+[ext_resource type="Script" path="res://scripts/ball.gd" id="1_jj6u5"]
+[ext_resource type="Texture2D" uid="uid://ccw8kbs5thar5" path="res://sprites/ball.png" id="1_yunpl"]
+[ext_resource type="AudioStream" uid="uid://cowx4w57tsu1v" path="res://assets/boing.wav" id="3_b4osw"]
+[ext_resource type="AudioStream" uid="uid://2ppqepybwsbd" path="res://assets/blup.wav" id="4_yxdup"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bdbct"]
+radius = 10.0499
+
+[node name="ball" type="CharacterBody2D"]
+script = ExtResource("1_jj6u5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_yunpl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_bdbct")
+
+[node name="Boing" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_b4osw")
+
+[node name="Blup" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_yxdup")

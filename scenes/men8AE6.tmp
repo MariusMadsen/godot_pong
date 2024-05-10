@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://c326ewgj1ju5f"]
+
+[ext_resource type="PackedScene" uid="uid://c0ieeiioytgjw" path="res://scenes/play_button.tscn" id="1_0fv6o"]
+
+[node name="Menu" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Title" type="Label" parent="."]
+offset_left = -19.0
+offset_top = -241.0
+offset_right = 21.0
+offset_bottom = -218.0
+text = "PONG"
+
+[node name="PlayButton" parent="." instance=ExtResource("1_0fv6o")]
+offset_left = -82.0
+offset_top = -48.0
+offset_right = -41.0
+offset_bottom = -17.0
+scale = Vector2(4.06956, 2.84349)
+script = null
